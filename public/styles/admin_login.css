@@ -1,0 +1,90 @@
+/* General reset and body styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f2f2f2; /* Light background */
+    color: #333; /* Dark text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/college-bg.png'); /* Retain background */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Login Form Container */
+.login-container {
+    background-color: #F5F5F5; /* Slightly off-white card background */
+    border: 1px solid #ECECEC; /* Light border */
+    border-radius: 15px; /* Rounded edges */
+    padding: 2rem; /* Spacing inside the card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 400px; /* Limit card width */
+    width: 100%; /* Ensure it fills available space */
+    text-align: center; /* Center-align the text */
+}
+
+.login-container:hover {
+    transform: scale(1.03); /* Slight lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    background-color: #EEEEEE; /* Slightly darker background on hover */
+}
+
+/* Header */
+.login-container h2 {
+    font-size: 2rem;
+    color: #333333; /* Dark gray text */
+    margin-bottom: 1.5rem;
+}
+
+/* Input Fields */
+.login-container form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+    border: 1px solid #CCCCCC; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus styles for input fields */
+.login-container form input:focus {
+    border-color: #5025D1; /* Highlight border on focus */
+    box-shadow: 0 0 4px rgba(80, 37, 209, 0.4); /* Soft focus glow */
+}
+
+/* Submit Button */
+.login-container form button {
+    margin-top: 20px;
+    padding: 0.8rem 1.5rem;
+    color: #FFFFFF; /* White text */
+    background-color: #5025D1; /* Primary button color */
+    border: none;
+    border-radius: 10px; /* Rounded corners */
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-container form button:hover {
+    background-color: #7A47E0; /* Lighter shade on hover */
+    transform: scale(1.05); /* Slight enlargement */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        margin: 0 1rem;
+    }
+}

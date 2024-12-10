@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Admin Dashboard</h2>
+        <h3>Manage Student Results</h3>
+        <form action="/admin/add-result" method="POST">
+            <select name="student_id" required>
+                <% students.forEach(student => { %>
+                    <option value="<%= student.id %>"><%= student.name %> (Roll: <%= student.roll_number %>)</option>
+                <% }) %>
+            </select>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <input type="number" name="marks" placeholder="Marks" required>
+            <input type="text" name="grade" placeholder="Grade" required>
+            <button type="submit" class="button">Add/Update Result</button>
+        </form>
+    </div>
+</body>
+</html>

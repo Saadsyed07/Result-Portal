@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>SSIEMS EduResults Portal</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="js/counter.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <img src="logo.png" alt="Logo" class="logo">
+    </nav>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            <img src="https://www.sih.gov.in/img1/slider/new.gif" alt="">
+            Result Declared for A.Y. 2022 fourth semester student can check their respective login.
+            <img src="https://www.sih.gov.in/img1/slider/new.gif" alt="">
+        </div>
+    </div>
+
+    <div class="container" id="home">
+        <div class="typing-container">
+            <h1>Welcome to SSIEMS's Result Portal</h1>
+        </div>
+        
+        <section class="cards">
+            <div class="cards__inner">
+                <!-- Student Login Card -->
+                <div class="card">
+                    <img src="data:image/png;base64,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">
+                    <h2 class="card__heading">Student Login</h2>
+                    <p>Access your academic results and records easily through this portal.</p>
+                    <a href="/student-login" class="cta">Login as Student</a>
+                </div>
+                <!-- Admin Login Card -->
+                <div class="card">
+                    <img src="data:image/png;base64,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">
+                    <h2 class="card__heading">Admin Login</h2>
+                    <p>Manage and update student data, results, and portal settings.</p>
+                    <a href="/admin-login" class="cta">Login as Admin</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+ 
+    <section class="counter-section" id="about">
+        <h1 class="counter-title">Our Achievements</h1>
+        <div class="container">
+            <div class="counter-container">
+                <div class="counter-box">
+                    <span class="count" data-target="707">0</span>
+                    <p>Total Students</p>
+                </div>
+                <div class="counter-box">
+                    <span class="count" data-target="250">0</span>
+                    <p>Result Declared</p>
+                </div>
+                <div class="counter-box">
+                    <span class="count" data-target="42">0</span>
+                    <p>Total Staff</p>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+
+    <section class="wow slideInLeft" id="meet-our-toppers">
+        
+        <div class="animated-line-topper"></div> 
+        <div class="container">
+          <h2 class="section-title">Meet Our Toppers</h2>
+          <div class="toppers-table">
+            <div class="table-header">
+              <div>Year</div>
+              <div>Rank</div>
+              <div>Name</div>
+              <div>CGPA</div>
+            </div>
+            <div class="table-row">
+                <div>2023-2024</div>
+                <div>1st</div>
+                <div>Arpita Ramkrishan Gunjkar</div>
+                <div>10.00</div>
+              </div>
+              <div class="table-row">
+                <div>2023-2024</div>
+                <div>2nd</div>
+                <div>Sakshi Vasantrao Yadav</div>
+                <div>10.00</div>
+              </div>
+              <div class="table-row">
+                <div>2022-2023</div>
+                <div>1st</div>
+                <div>Vairagar Ramesh N.</div>
+                <div>9.17</div>
+              </div>
+              <div class="table-row">
+                <div>2022-2023</div>
+                <div>2nd</div>
+                <div>Zarkar Pratiksha Pravin</div>
+                <div>9.00</div>
+              </div>
+              <div class="table-row">
+                <div>2021-2022</div>
+                <div>1st</div>
+                <div>Dhoot Yash Virendrakumar</div>
+                <div>9.80</div>
+              </div>
+              <div class="table-row">
+                <div>2021-2022</div>
+                <div>2nd</div>
+                <div>Shinde Vinayak Rajesh</div>
+                <div>9.50</div>
+              </div>
+              <div class="table-row">
+                <div>2020-2021</div>
+                <div>1st</div>
+                <div>Deshpande Rucha Uday</div>
+                <div>9.80</div>
+              </div>
+              <div class="table-row">
+                <div>2020-2021</div>
+                <div>2nd</div>
+                <div>Patil Varsha Sanjay</div>
+                <div>10.00</div>
+              </div>
+              <div class="table-row">
+                <div>2019-2020</div>
+                <div>1st</div>
+                <div>Borul Pratiksha</div>
+                <div>10.00</div>
+              </div>
+              <div class="table-row">
+                <div>2019-2020</div>
+                <div>2nd</div>
+                <div>Shingare Komal Sitaram</div>
+                <div>9.94</div>
+              </div>
+            <div class="table-row">
+              <div>2018-2019</div>
+              <div>1st</div>
+              <div>Agrwal Sheetal Sunil</div>
+              <div>8.77</div>
+            </div>
+            <div class="table-row">
+              <div>2018-2019</div>
+              <div>2nd</div>
+              <div>Boralkar Rutuja G.</div>
+              <div>8.73</div>
+            </div>
+          </div>
+        </div>
+    </section>
+   
+    <h2 class="contact-title" id="contact">Contact Us</h2>
+      <div class="animated-line-contact"></div> 
+      <section class="contact-container" >
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2>Our Location</h2>
+            <!-- Correct Google Maps Embed with Correct Location -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.5078124347656!2d76.75257107483063!3d19.26184494920501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd03843d71a0111%3A0x2a2ed35db9c6236e!2sShri%20Shivaji%20Institute%20of%20Engineering%20and%20Management%20Studies!5e0!3m2!1sen!2sin!4v1698660927935!5m2!1sen!2sin"
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    
+        <!-- Form Section -->
+        <div class="form-section">
+            <h2>Contact Us Today</h2>
+            <form action="/contact/submit" method="post">
+                <input type="text" placeholder="Full Name*" name="name" required>
+                <input type="text" placeholder="Mobile Number*" name="mobile" required>
+                <textarea name="message" rows="5" placeholder="Your Message*" required></textarea>
+                <button type="submit">SEND</button>
+            </form>
+            <!-- Address -->
+            <div class="address-section">
+                <p><strong>Address:</strong> Shri Shivaji Institute Of Engg. & Management Studies, Vasmat Road, NH 222, Parbhani, Maharashtra – 431401</p>
+                <a href="https://maps.app.goo.gl/Xw1DnoTyDhP3WKdNA" target="_blank" class="map-link">
+                    Open on Google Maps
+                </a>
+            </div>
+        </div>
+        <div class="animated-line"></div> 
+    </section>
+    
+
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>
+                    Your one-stop platform for real-time updates and student information. We strive to make education accessible and effective for all.
+                </p>
+            </div>
+    
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Results</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="material-symbols-outlined">location_on</i> Shri Shivaji Institute Of Engg. & Management Studies, Vasmat Road, Parbhani – 431401</li>
+                    <li><i class="material-symbols-outlined">phone</i> 0240-2332347</li>
+                    <li><i class="material-symbols-outlined">email</i> mspmandal@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom" style="color: white;">
+            <p>&copy; 2024 Shri Shivaji Institute Of Engg. & Management Studies. All rights reserved.</p>
+            <p>Designed with <span class="heart">❤️</span> by Syed Saad.</p>
+        </div>
+    </footer>
+    
+    
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav ul');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+    </script>
+</body>
+</html>

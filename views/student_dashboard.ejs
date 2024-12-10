@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result</title>
+    <link rel="stylesheet" href="/styles/result.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="nav">
+        <ul>
+            <li><a href="/student" style="color: #ECE7E2;">Student</a></li>
+            <li><a href="/student/dashboard" style="color: #ECE7E2;">Results</a></li>
+        </ul>
+    </nav>
+
+    <!-- Result Container -->
+    <button class="download-btn" onclick="downloadResult()">Print</button>
+    <div class="result-container" id="result-section">
+        <h2 class="title">Semester Result</h2>
+
+        <div class="info">
+            <p><strong>Examination:</strong> Summer Semester Examinations 2023</p>
+            <p><strong>Faculty:</strong> Engineering and Technology</p>
+            <p><strong>Institute Name:</strong> Shri Shivaji Institute of Engineering & Mgmt Studies, Parbhani</p>
+            <p><strong>Programme:</strong> Bachelor of Technology (Computer Science and Engineering)</p>
+            <p><strong>PRN:</strong> <%= prn %></p>
+            <p><strong>Semester:</strong> IV</p>
+            <p><strong>Student's Name:</strong> <%= name %></p>
+            <img src="/batu_logo.jpeg" alt="">
+        </div>
+     
+        <table class="subject-table">
+            <thead>
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Subject Name</th>
+                    <th>Max Marks</th>
+                    <th>Credits</th>
+                    <th>CA (20)</th>
+                    <th>Mid (20)</th>
+                    <th>ESE (60)</th>
+                    <th>Grace Marks</th>
+                    <th>Total (with grace)</th>
+                    <th>Grade</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(result => { %>
+                    <tr>
+                        <td><%= result.subjectCode %></td>
+                        <td><%= result.subjectName %></td>
+                        <td>100</td>
+                        <td><%= result.credits %></td>
+                        <td><%= result.caMarks %></td>
+                        <td><%= result.midMarks %></td>
+                        <td><%= result.eseMarks %></td>
+                        <td><%= result.graceMarks %></td>
+                        <td><%= result.totalMarks %></td>
+                        <td><%= result.grade %></td>
+                        <td>
+                            <% if (result.grade === 'FF') { %>
+                                Fail
+                            <% } else { %>
+                                Pass
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+                <% labResults.forEach(result => { %>
+                    <tr>
+                        <td><%= result.subjectCode %></td>
+                        <td><%= result.subjectName %></td>
+                        <td>100</td>
+                        <td><%= result.credits %></td>
+                        <td><%= result.caMarks %></td>
+                        <td>N/A</td> <!-- Lab subjects don't have midMarks -->
+                        <td><%= result.eseMarks %></td>
+                        <td>N/A</td> <!-- Lab subjects don't have grace marks -->
+                        <td><%= result.totalMarks %></td>
+                        <td><%= result.grade %></td>
+                        <td>
+                            <% if (result.grade === 'FF') { %>
+                                Fail
+                            <% } else { %>
+                                Pass
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <!-- Performance Summary -->
+        <div class="performance-summary">
+            <h3>Current Semester Performance</h3>
+            <table>
+                <tr>
+                    <td>Credits</td>
+                    <td>Grade Points</td>
+                    <td>SGPA</td>
+                </tr>
+                <tr>
+                    <td><%= credits %></td>
+                    <td>-</td> <!-- Replace with actual grade points if available -->
+                    <td><%= sgpa %></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Download Button -->
+      
+    </div>
+    <script>
+        async function downloadResult() {
+            const resultSection = document.getElementById("result-section");
+    
+            // Use html2canvas to capture the section as an image
+            const canvas = await html2canvas(resultSection, {
+                scale: 2, // High resolution
+                useCORS: true, // Enable cross-origin for external images
+                allowTaint: true // Allow tainted cross-origin content
+            });
+    
+            // Convert the canvas to a data URL
+            const imgData = canvas.toDataURL("image/png");
+    
+            // Initialize jsPDF
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF("p", "mm", "a4");
+    
+            // Calculate dimensions to fit the image into the PDF
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = pdfWidth - 20; // Leave some margin
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    
+            // Center the image on the page
+            const xOffset = (pdfWidth - imgWidth) / 2;
+            let yOffset = 10; // Top margin
+    
+            // Add the image to the PDF
+            if (imgHeight > pdfHeight - 20) {
+                // Multi-page handling
+                let remainingHeight = imgHeight;
+    
+                while (remainingHeight > 0) {
+                    pdf.addImage(imgData, "PNG", xOffset, yOffset, imgWidth, Math.min(imgHeight, pdfHeight - 20));
+                    remainingHeight -= pdfHeight - 20;
+                    if (remainingHeight > 0) {
+                        pdf.addPage();
+                    }
+                    yOffset = 10; // Reset yOffset for new page
+                }
+            } else {
+                pdf.addImage(imgData, "PNG", xOffset, yOffset, imgWidth, imgHeight);
+            }
+    
+            // Save the PDF
+            pdf.save("result.pdf");
+        }
+    </script>
+    
+    
+    
+</body>
+</html>
