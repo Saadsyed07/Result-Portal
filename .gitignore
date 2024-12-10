@@ -1,5 +1,20 @@
-node_modules,
-.env,
-results.json,
-results.xls,
-app.js 
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+
+# Logs
+*.log
+
+# Output/Generated Files
+results.json
+results.xls
+
+# Temporary Files
+.DS_Store
+Thumbs.db
+
+# IDE Specific (Optional)
+.vscode/
+*.code-workspace
