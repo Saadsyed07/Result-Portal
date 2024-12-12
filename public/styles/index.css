@@ -60,7 +60,7 @@ body {
 .nav {
     position: sticky;
     width: 100%;
-    height: 5rem;
+    height: 4rem;
     background: #5025D1; /* Keep navbar blue */
     display: flex;
     align-items: center;
@@ -130,18 +130,18 @@ body {
   
 /* Container and Header */
 .container {
-    display: flex;
+    display: flex
+;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Adjust height to center content */
+    height: 54vh;
     text-align: center;
-    background-color: #FFFFFF; /* White background */
+    background-color: #FFFFFF;
     padding: 3rem 1rem;
-    margin-bottom: 2rem; /* Add space between container and cards */
-    margin-top: 8rem;
+    margin-bottom: -2rem;
+    margin-top: 6rem;
 }
- 
 
 /* Typing Animation for h1 */
 .container h1 {
@@ -172,6 +172,7 @@ body {
     justify-content: center;
     gap: 2rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .card {
@@ -592,6 +593,9 @@ form button:hover {
     .footer-section ul li {
         justify-content: center;
     }
+    .footer2 ul {
+        text-align: left;
+    }
 }
 
 
@@ -650,7 +654,7 @@ body {
 .nav {
     position: sticky;
     width: 100%;
-    height: 5rem;
+    height: 4rem;
     background: #5025D1;
     display: flex;
     align-items: center;
@@ -840,13 +844,13 @@ body {
 
         .container h1 {
             font-size: 20px;
-            margin-top: 131px;
+            margin-top: 200px;
         }
     /* Counter Section */
 
     .counter-section{
         margin: 0;padding: 0;
-        margin-top: 280px;
+        margin-top: 300px;
     }
     .counter-container {
         gap: 1.5rem;

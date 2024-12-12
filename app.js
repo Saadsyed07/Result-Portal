@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
+const fs = require('fs')
 const path = require("path");
 const resultsData = require('./results.json'); // Load JSON data
 
@@ -198,6 +199,38 @@ app.get('/admin/dashboard', (req, res) => {
     // Retrieve all results for admin view (could be further customized)
     res.render('admin_dashboard', { results: resultsData });
 });
+
+app.post('/contact/submit', (req, res) => {
+    const { name, mobile, message } = req.body;
+  
+    // Validate if required fields are provided
+    if (!name || !mobile || !message) {
+      return res.status(400).send('<p>All fields are required!</p><a href="/">Go back</a>');
+    }
+  
+    // Define the file path where form data will be saved
+    const filePath = path.join(__dirname, 'contact_data.txt');
+  
+    // Prepare the data to be saved (you can format it as desired)
+    const formData = `Name: ${name}\nMobile: ${mobile}\nMessage: ${message}\n\n`;
+  
+    // Append the form data to the file
+    fs.appendFile(filePath, formData, (err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send('<p>Failed to save contact data. Please try again later.</p><a href="/">Go back</a>');
+      }
+  
+      // Respond with success message
+      res.send(`
+        <div style="text-align: center; padding: 20px; font-family: Arial, sans-serif;">
+          <h2>Thank you for contacting us!</h2>
+          <p>Your message has been received. We will contact you shortly.</p>
+          <a href="/" style="padding: 10px 20px; background-color: #5025D1; color: white; text-decoration: none; border-radius: 5px;">Go back</a>
+        </div>
+      `);
+    });
+  });
 
 // Start server
 app.listen(PORT, () => {
