@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
+const path = require("path");
 const resultsData = require('./results.json'); // Load JSON data
 
 const app = express();
@@ -15,8 +16,7 @@ app.use(session({
     secret: 'secret_key',
     resave: false,
     saveUninitialized: true,
-}));
-const path = require("path");
+}))
 app.set("views", path.join(__dirname, "views")); // Adjust path if needed
 app.set("view engine", "ejs");
 
