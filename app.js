@@ -16,7 +16,10 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }));
-app.set("views", path.join(__dirname, "src", "views"));
+const path = require("path");
+app.set("views", path.join(__dirname, "views")); // Adjust path if needed
+app.set("view engine", "ejs");
+
 
 
 // Set EJS as templating engine
