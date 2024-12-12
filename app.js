@@ -16,6 +16,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }));
+app.set("views", path.join(__dirname, "src", "views"));
+
 
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
