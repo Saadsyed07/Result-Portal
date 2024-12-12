@@ -116,38 +116,54 @@
       
     </div>
     <script>
+        function applyDesktopStylesForDownload(element) {
+            const originalStyles = element.style.cssText; // Save original styles
+            element.style.cssText += `
+                width: 820px; 
+                font-size: 16px; 
+                <!-- line-height: 1.5; -->
+            `; // Apply fixed desktop styles
+            return originalStyles; // Return the original styles for restoration
+        }
+        
         async function downloadResult() {
             const resultSection = document.getElementById("result-section");
-    
+        
+            // Apply desktop styles
+            const originalStyles = applyDesktopStylesForDownload(resultSection);
+        
             // Use html2canvas to capture the section as an image
             const canvas = await html2canvas(resultSection, {
                 scale: 2, // High resolution
                 useCORS: true, // Enable cross-origin for external images
-                allowTaint: true // Allow tainted cross-origin content
+                allowTaint: true, // Allow tainted cross-origin content
             });
-    
+        
+            // Restore the original styles
+            resultSection.style.cssText = originalStyles;
+        
             // Convert the canvas to a data URL
             const imgData = canvas.toDataURL("image/png");
-    
+        
             // Initialize jsPDF
             const { jsPDF } = window.jspdf;
             const pdf = new jsPDF("p", "mm", "a4");
-    
+        
             // Calculate dimensions to fit the image into the PDF
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
             const imgWidth = pdfWidth - 20; // Leave some margin
             const imgHeight = (canvas.height * imgWidth) / canvas.width;
-    
+        
             // Center the image on the page
             const xOffset = (pdfWidth - imgWidth) / 2;
             let yOffset = 10; // Top margin
-    
+        
             // Add the image to the PDF
             if (imgHeight > pdfHeight - 20) {
                 // Multi-page handling
                 let remainingHeight = imgHeight;
-    
+        
                 while (remainingHeight > 0) {
                     pdf.addImage(imgData, "PNG", xOffset, yOffset, imgWidth, Math.min(imgHeight, pdfHeight - 20));
                     remainingHeight -= pdfHeight - 20;
@@ -159,10 +175,9 @@
             } else {
                 pdf.addImage(imgData, "PNG", xOffset, yOffset, imgWidth, imgHeight);
             }
-    
             // Save the PDF
             pdf.save("result.pdf");
-        }
+        }   
     </script>
     
     

@@ -18,3 +18,4 @@ Thumbs.db
 # IDE Specific (Optional)
 .vscode/
 *.code-workspace
+.vercel
