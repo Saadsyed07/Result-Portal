@@ -159,14 +159,16 @@
     </div>
     <script>
         function applyDesktopStylesForDownload(element) {
-            const originalStyles = element.style.cssText; // Save original styles
+            const originalStyles = element.style.cssText; // Save current styles
             element.style.cssText += `
                 width: 900px; 
-                font-size: 16px; 
-                <!-- line-height: 1.5; -->
-            `; // Apply fixed desktop styles
-            return originalStyles; // Return the original styles for restoration
+                font-size: 16px;
+                overflow: visible; 
+                white-space: normal;
+            `;
+            return originalStyles; // Return for restoration
         }
+        
 
         async function downloadResult() {
             const resultSection = document.getElementById("result-section");
