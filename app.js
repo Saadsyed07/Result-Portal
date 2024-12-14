@@ -94,37 +94,45 @@ app.get('/student/dashboard', (req, res) => {
     let emptyIndex = 1; // Start from 1 for `__EMPTY_<index>` after the first subject
 
     // Process regular subjects
-    subjects.forEach((subject, idx) => {
-        const subjectCode = subject.split(' ')[0];
-        const subjectName = subject.split(' ').slice(1).join(' '); // Remove the code
+   // Process regular subjects
+subjects.forEach((subject, idx) => {
+    const subjectCode = subject.split(' ')[0]; // Extract subject code (e.g., 'BTCOC401')
+    const subjectName = subject.split(' ').slice(1).join(' '); // Extract the subject name (e.g., 'Design & Analysis of Algorithms')
 
-        if (idx === 0) {
-            // First subject: handle CA marks from `__EMPTY` and others from `__EMPTY_<index>`
-            studentResults.push({
-                subjectCode: subjectCode,
-                subjectName: subjectName,
-                credits: studentData[`${subjectName}`] || 'N/A',
-                caMarks: studentData[`__EMPTY`] || 'N/A',
-                midMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-                eseMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-                graceMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-                totalMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-                grade: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-            });
-        } else {
-            studentResults.push({
-                subjectCode: subjectCode,
-                subjectName: subjectName,
-                credits: studentData[`${subjectName}`] || 'N/A',
-                caMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-                midMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-                eseMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-                graceMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-                totalMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-                grade: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
-            });
-        }
-    });
+    // Ensure that subjectCode is always valid or fallback to 'N/A' if not available
+    const fullSubjectKey = `${subjectCode} ${subjectName}`;
+    const validSubjectCode = subjectCode || 'N/A';
+    const credits = studentData[fullSubjectKey] || 'N/A';  // Default to 'N/A' if not found
+
+    if (idx === 0) {
+        // First subject: handle CA marks from `__EMPTY` and others from `__EMPTY_<index>`
+        studentResults.push({
+            subjectCode: validSubjectCode,  // Use the fallback or valid code
+            subjectName: subjectName,
+            credits: credits,
+            caMarks: studentData[`__EMPTY`] || 'N/A',
+            midMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+            eseMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+            graceMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+            totalMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+            grade: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+        });
+   
+    } else {
+        studentResults.push({
+            subjectCode: validSubjectCode,  // Use the fallback or valid code
+            subjectName: subjectName,
+            credits: credits,
+            caMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+            midMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+            eseMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+            graceMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+            totalMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+            grade: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
+        });
+    }
+});
+
 
     // Reset the index for lab subjects
     emptyIndex = 30; // Adjust this based on the position of lab subjects in the data
@@ -133,11 +141,15 @@ app.get('/student/dashboard', (req, res) => {
     labSubjects.forEach(subject => {
         const subjectCode = subject.split(' ')[0];
         const subjectName = subject.split(' ').slice(1).join(' '); // Remove the code
+        const fullSubjectKey = `${subjectCode} ${subjectName}`;
+    
+    const credits = studentData[fullSubjectKey] || 'N/A';  // Default to 'N/A' if not found
+
 
         labResults.push({
             subjectCode: subjectCode,
             subjectName: subjectName,
-            credits: studentData[`${subjectName}`] || 'N/A',
+            credits: credits,
             caMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
             midMarks: 'N/A', // Lab subjects don't have midMarks
             eseMarks: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
