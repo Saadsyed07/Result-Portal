@@ -96,7 +96,7 @@ app.get('/student/dashboard', (req, res) => {
     // Process regular subjects
     subjects.forEach((subject, idx) => {
         const subjectCode = subject.split(' ')[0];
-        const subjectName = subject;
+        const subjectName = subject.split(' ').slice(1).join(' '); // Remove the code
 
         if (idx === 0) {
             // First subject: handle CA marks from `__EMPTY` and others from `__EMPTY_<index>`
@@ -112,7 +112,6 @@ app.get('/student/dashboard', (req, res) => {
                 grade: studentData[`__EMPTY_${emptyIndex++}`] || 'N/A',
             });
         } else {
-            // All other subjects: all fields from `__EMPTY_<index>`
             studentResults.push({
                 subjectCode: subjectCode,
                 subjectName: subjectName,
@@ -133,7 +132,7 @@ app.get('/student/dashboard', (req, res) => {
     // Process lab subjects
     labSubjects.forEach(subject => {
         const subjectCode = subject.split(' ')[0];
-        const subjectName = subject;
+        const subjectName = subject.split(' ').slice(1).join(' '); // Remove the code
 
         labResults.push({
             subjectCode: subjectCode,
@@ -161,6 +160,7 @@ app.get('/student/dashboard', (req, res) => {
         cgpa: studentData.SGPA || 'N/A', // Adjust if CGPA exists in a different key
     });
 });
+
 
 // route for student page
 app.get('/student', (req, res) => {
