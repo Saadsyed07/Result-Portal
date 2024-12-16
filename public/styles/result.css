@@ -37,7 +37,7 @@ a {
 .result-container {
     max-width: 820px;
     margin: 0 auto;
-    padding: 20px;
+    /* padding: 20px; */
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -95,7 +95,7 @@ a {
 .performance-summary table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 10px;
+    margin-bottom: 100px;
 }
 
 .performance-summary td {
