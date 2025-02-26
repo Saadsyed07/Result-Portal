@@ -75,6 +75,6 @@ Previously in our college, results were shared via Excel sheets, creating access
 ## 📬 Feedback and Contributions
 - We welcome contributions to enhance the system. Feel free to open an issue or submit a pull request.
  --- 
-Developed with ❤️ by Syed Saad and Team
+Developed with ❤️ by Syed Saad and Team.
 [Homepage](https://result-portal-eta.vercel.app)
  ---
