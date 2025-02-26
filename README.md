@@ -1,4 +1,4 @@
-# 🎓 Student Result Management System  
+ji# 🎓 Student Result Management System  
 
 **A web-based solution to streamline result accessibility and management for students and administrators.**
 
@@ -76,4 +76,5 @@ Previously in our college, results were shared via Excel sheets, creating access
 - We welcome contributions to enhance the system. Feel free to open an issue or submit a pull request.
  --- 
 Developed with ❤️ by Syed Saad and Team
+[Homepage](https://result-portal-eta.vercel.app)
  ---
