@@ -2,18 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Login</title>
+    <title>SSIEMS | Admin Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/admin_login.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Admin Login</h2>
-        <form action="/login/admin" method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit" class="button">Login</button>
-        </form>
+    <div class="login-bg">
+        <div class="form-container admin-form">
+            <img src="logo.png" alt="SSIEMS Admin Logo" class="login-logo">
+            <h2 class="login-title">Admin Login</h2>
+            <form action="/login/admin" method="POST" class="login-form">
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" id="username" class="form-input" placeholder="Enter your username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-input" placeholder="Enter your password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="login-btn admin-btn">Login</button>
+            </form>
+        </div>
     </div>
-    
 </body>
 </html>

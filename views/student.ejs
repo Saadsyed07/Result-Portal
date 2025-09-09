@@ -3,69 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Info</title>
-    <link rel="stylesheet" href="/styles/result.css">
+    <title>SSIEMS | Student Info</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Student Card Styling */
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #3b82f6;
+    --nav-blue: #2563eb;
+    --accent-color: #10b981;
+    --danger-color: #ef4444;
+    --background-light: #f8fafc;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.09), 0 2px 4px -2px rgb(0 0 0 / 0.09);
+}
+
+body {
+    font-family: 'Inter', 'Poppins', Arial, sans-serif;
+    background: var(--background-light);
+    color: var(--text-primary);
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Navbar */
+.nav {
+    background: linear-gradient(90deg, var(--primary-color) 70%, var(--primary-light) 100%);
+    padding: 0.75rem 0;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #ECE7E2;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+}
+
+.nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* Student Card Styling */
 .student-card {
-    background-color: #5025D1; /* Matching the navbar blue */
-    color: #FFFFFF; /* White text for contrast */
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 2rem auto; /* Space around the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    max-width: 500px; /* Limit the width for readability */
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    max-width: 480px;
+    margin: 2.5rem auto 0 auto;
+    padding: 2.5rem 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    height: 300px;
-}
-
-/* Student Info in Card */
-.student-info h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-}
-
-.student-info p {
-    font-size: 1rem;
-    margin: 0.3rem 0;
-    font-weight: 500;
-}
-
-/* Make Card Responsive */
-@media (max-width: 768px) {
-    .student-card {
-        flex-direction: column; /* Stack items on small screens */
-        text-align: center;
-        width: 306px; ;
-    }
-
-    .student-info h3 {
-        font-size: 1.5rem;
-    }
-
-    .student-info p {
-        font-size: 0.9rem;
-    }
+    justify-content: flex-start;
+    gap: 2rem;
 }
 
 .student-card img {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    margin: auto;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.12);
+    background: var(--white);
+    flex-shrink: 0;
 }
 
+.student-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.student-info h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.65rem;
+    margin-bottom: 0.7rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1.5px;
+}
+
+.student-info p {
+    font-size: 1.08rem;
+    margin: 0.35rem 0;
+    font-weight: 500;
+    color: #f3f3f3;
+}
+
+.student-info p strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+    .student-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 97vw;
+        padding: 1.5rem 1rem;
+        gap: 1.2rem;
+    }
+
+    .student-card img {
+        margin: 0 0 1.2rem 0;
+    }
+
+    .student-info h3 {
+        font-size: 1.2rem;
+    }
+    .student-info p {
+        font-size: 0.97rem;
+    }
+}
     </style>
 </head>
 <body>
     <nav class="nav">
         <ul>
-            <li><a href="/student" style="color: #ECE7E2;">Student</a></li>
-            <li><a href="/student/dashboard" style="color: #ECE7E2;">Results</a></li>
+            <li><a href="/student">Student</a></li>
+            <li><a href="/student/dashboard">Results</a></li>
         </ul>
     </nav>
 

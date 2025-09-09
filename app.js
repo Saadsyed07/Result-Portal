@@ -139,7 +139,8 @@ subjects.forEach((subject, idx) => {
 
     // Process lab subjects
     labSubjects.forEach(subject => {
-        const subjectCode = subject.split(' ')[0];
+        // const subjectCode = subject.split(' ')[0];
+        const subjectCode = subject.split(' ')[12]; 
         const subjectName = subject.split(' ').slice(1).join(' '); // Remove the code
         const fullSubjectKey = `${subjectCode} ${subjectName}`;
     
@@ -199,7 +200,15 @@ app.get('/student', (req, res) => {
 
 
 
-
+app.post('/login/admin', (req, res) => {
+    const { username, password } = req.body;
+    // Dummy credentials (for demo)
+    if (username === "admin" && password === "admin123") {
+        req.session.adminId = username;
+        return res.redirect('/admin/dashboard');
+    }
+    return res.send('<p>Invalid admin credentials</p><a href="/admin-login">Go back</a>');
+});
 
 
 // Admin dashboard (dummy route for now)
@@ -207,9 +216,14 @@ app.get('/admin/dashboard', (req, res) => {
     if (!req.session.adminId) {
         return res.redirect('/admin-login');
     }
-
-    // Retrieve all results for admin view (could be further customized)
-    res.render('admin_dashboard', { results: resultsData });
+    // Make sure resultsData is loaded (from results.json)
+    // Build students array from your data
+    const students = resultsData.map(s => ({
+        id: s.PRN,
+        name: s["Student Name"],
+        roll_number: s.PRN
+    }));
+    res.render('admin_dashboard', { results: resultsData, students }); // Pass 'students' to template!
 });
 
 app.post('/contact/submit', (req, res) => {

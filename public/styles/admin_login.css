@@ -1,90 +1,130 @@
-/* General reset and body styles */
-* {
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #3b82f6;
+    --accent-color: #10b981;
+    --danger-color: #ef4444;
+    --border-color: #e5e7eb;
+    --background-light: #f8fafc;
+    --white: #ffffff;
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --input-bg: #f9fafb;
+    --input-focus: #10b981;
+}
+
+body, html {
+    min-height: 100vh;
+    font-family: 'Inter', 'Poppins', Arial, sans-serif;
+    background: var(--background-light);
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background: #f2f2f2; /* Light background */
-    color: #333; /* Dark text color */
+.login-bg {
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-image: url('/college-bg.png'); /* Retain background */
-    background-size: cover;
-    background-repeat: no-repeat;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--background-light), var(--white));
 }
 
-/* Login Form Container */
-.login-container {
-    background-color: #F5F5F5; /* Slightly off-white card background */
-    border: 1px solid #ECECEC; /* Light border */
-    border-radius: 15px; /* Rounded edges */
-    padding: 2rem; /* Spacing inside the card */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 400px; /* Limit card width */
-    width: 100%; /* Ensure it fills available space */
-    text-align: center; /* Center-align the text */
+.form-container {
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    min-width: 340px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.login-container:hover {
-    transform: scale(1.03); /* Slight lift on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow */
-    background-color: #EEEEEE; /* Slightly darker background on hover */
+.admin-form {
+    border: 2px solid var(--accent-color);
 }
 
-/* Header */
-.login-container h2 {
+.login-logo {
+    width: 80px;
+    /* margin-bottom: 1.5rem; */
+}
+
+.login-title {
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
-    color: #333333; /* Dark gray text */
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.form-group {
     margin-bottom: 1.5rem;
+    text-align: left;
 }
 
-/* Input Fields */
-.login-container form input {
-    width: 100%;
-    padding: 0.8rem;
-    margin: 0.8rem 0;
-    border: 1px solid #CCCCCC; /* Light border */
-    border-radius: 10px; /* Rounded corners */
+.form-label {
+    font-weight: 500;
     font-size: 1rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-input {
+    width: 90%;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--input-bg);
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 0.3rem;
+}
+
+.form-input:focus {
     outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border-color: var(--input-focus);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.13);
 }
 
-/* Focus styles for input fields */
-.login-container form input:focus {
-    border-color: #5025D1; /* Highlight border on focus */
-    box-shadow: 0 0 4px rgba(80, 37, 209, 0.4); /* Soft focus glow */
-}
-
-/* Submit Button */
-.login-container form button {
-    margin-top: 20px;
-    padding: 0.8rem 1.5rem;
-    color: #FFFFFF; /* White text */
-    background-color: #5025D1; /* Primary button color */
-    border: none;
-    border-radius: 10px; /* Rounded corners */
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
+.login-btn {
     width: 100%;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    background: linear-gradient(135deg, var(--accent-color), #059669);
+    color: var(--white);
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 8px rgba(16,185,129,0.09);
+    transition: background 0.2s, transform 0.2s;
 }
 
-.login-container form button:hover {
-    background-color: #7A47E0; /* Lighter shade on hover */
-    transform: scale(1.05); /* Slight enlargement */
+.login-btn:hover, .admin-btn:hover {
+    background: linear-gradient(135deg, #059669, var(--accent-color));
+    transform: translateY(-2px) scale(1.02);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .login-container {
-        margin: 0 1rem;
+@media (max-width: 500px) {
+    .form-container {
+        padding: 1.5rem 1rem;
+        min-width: unset;
+        max-width: 98vw;
+    }
+    .login-logo {
+        width: 140px;
+    }
+    .login-title {
+        font-size: 1.4rem;
     }
 }
