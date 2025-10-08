@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login</title>
-    <link rel="stylesheet" href="/styles/student_login.css"> <!-- External CSS -->
+    <title>SSIEMS | Student Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/student_login.css">
 </head>
 <body>
-
-    <div class="form-container">
-        <h1>Student Login</h1>
-        <form action="/login/student" method="POST">
-            <label for="prn"></label>
-            <input type="text" id="prn" name="prn" placeholder="Enter your PRN" required>
-            <p>eg: 2222521242016</p>
-            <label for="password"></label>
-            <input type="password" id="password" name="password" placeholder="Enter your Password" required>
-            
-            <!-- <p>ex. 2222521242016</p> -->
-            <p>Note:The Default Password Is :- 12345</p>
-            
-            <button type="submit">Login</button>
-        </form>
+    <div class="login-bg">
+        <div class="form-container">
+            <img src="logo.png" alt="SSIEMS Logo" class="login-logo">
+            <h1 class="login-title">Student Login</h1>
+            <form action="/login/student" method="POST" class="login-form">
+                <div class="form-group">
+                    <label for="prn" class="form-label">PRN</label>
+                    <input type="text" id="prn" name="prn" class="form-input" placeholder="Enter your PRN" required autocomplete="username">
+                    <small class="form-hint">E.g. 2222521242016</small>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-input" placeholder="Enter your Password" required autocomplete="current-password">
+                    <small class="form-hint">Note: The default password is <span class="default-password">12345</span></small>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
     </div>
-
 </body>
 </html>

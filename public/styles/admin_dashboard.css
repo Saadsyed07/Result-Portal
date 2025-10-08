@@ -1,0 +1,283 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #3b82f6;
+    --accent-color: #10b981;
+    --background-light: #f8fafc;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.09), 0 2px 4px -2px rgb(0 0 0 / 0.09);
+}
+
+body {
+    font-family: 'Inter', 'Poppins', Arial, sans-serif;
+    background: var(--background-light);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Admin Navbar */
+.admin-nav {
+    background: linear-gradient(90deg, var(--accent-color) 60%, var(--primary-color) 100%);
+    box-shadow: var(--shadow-md);
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 60px;
+    flex-wrap: wrap;
+}
+
+.admin-logo img {
+    height: 44px;
+    margin-left: 2rem;
+    max-width: 140px;
+    width: auto;
+    vertical-align: middle;
+}
+
+.admin-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0 2rem 0 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.admin-nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    display: inline-block;
+}
+
+.admin-nav ul li a.active,
+.admin-nav ul li a:hover {
+    background: var(--primary-light);
+    color: var(--accent-color);
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+    padding: 0 2rem 2rem 2rem;
+}
+
+.dashboard-title {
+    font-size: 2.2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.dashboard-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    word-break: break-word;
+}
+
+.dummy-cred {
+    background: var(--background-light);
+    color: var(--accent-color);
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 8px;
+    font-family: 'Inter', monospace;
+    font-size: 1rem;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background: var(--white);
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    padding: 2rem 1.3rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    min-width: 0;
+}
+
+.dashboard-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+    word-break: break-word;
+}
+
+.dashboard-card i {
+    margin-right: 0.5rem;
+    color: var(--accent-color);
+}
+
+.dashboard-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    word-break: break-word;
+}
+
+.card-action-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--primary-color) 80%, var(--primary-light) 100%);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-md);
+    margin-top: 0.25rem;
+    word-break: break-word;
+}
+
+.card-action-btn:hover {
+    background: linear-gradient(90deg, var(--primary-dark) 80%, var(--primary-color) 100%);
+    color: var(--accent-color);
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.students-table th,
+.students-table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    word-break: break-word;
+}
+
+.students-table th {
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.students-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .dashboard-container {
+        padding: 0 0.5rem 2rem 0.5rem;
+    }
+    .dashboard-cards {
+        gap: 1rem;
+    }
+    .students-table th,
+    .students-table td {
+        padding: 8px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    .dashboard-card {
+        padding: 1.1rem 0.6rem;
+    }
+    .dashboard-title {
+        font-size: 1.4rem;
+    }
+    .admin-logo img {
+        height: 34px;
+        margin-left: 1rem;
+        max-width: 100px;
+    }
+    .admin-nav ul {
+        gap: 1rem;
+        margin: 0 1rem 0 0;
+    }
+    .dashboard-container {
+        max-width: 100vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .admin-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5rem 0.3rem;
+    }
+    .admin-logo img {
+        margin: 0 0 0.5rem 0;
+    }
+    .admin-nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0;
+    }
+    .dashboard-card {
+        padding: 0.7rem 0.2rem;
+    }
+    .dashboard-title {
+        font-size: 1.1rem;
+    }
+    .dashboard-subtitle {
+        font-size: 0.97rem;
+    }
+    .students-table th,
+    .students-table td {
+        padding: 6px;
+        font-size: 0.89rem;
+    }
+    .students-table {
+        font-size: 0.89rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .dashboard-title {
+        font-size: 0.95rem;
+    }
+    .dashboard-card h3 {
+        font-size: 0.93rem;
+    }
+    .dashboard-card p,
+    .dashboard-subtitle {
+        font-size: 0.8rem;
+    }
+    .students-table th,
+    .students-table td {
+        padding: 4px;
+        font-size: 0.8rem;
+    }
+}
